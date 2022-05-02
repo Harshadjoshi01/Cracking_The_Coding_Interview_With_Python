@@ -7,8 +7,10 @@ Output: True (permutations : "taco cat" , "atco cta" , etc. )
 Hints: #106, h 0134, § 136
 '''
 
-from operator import countOf
+#Solution 1
 
+from operator import countOf
+from collections import Counter
 
 def Even_palindrome_check(str):
     count = [0] * 256
@@ -39,7 +41,7 @@ def Odd_palindrome_check(str):
     else:
         return False    
 
-def Palindrome_Permutation(str1):
+def Palindrome_Permutation_1(str1):
     str1 = "".join(tuple(str1.strip().lower().split(" ")))
     if (len(str1) % 2 == 0):
         return Even_palindrome_check(str1)
@@ -47,7 +49,18 @@ def Palindrome_Permutation(str1):
         return Odd_palindrome_check(str1)
 
 
+def Pal_Per(s):
+    cnt = Counter(s)
+    odd = 0
+    for freq in cnt.values():
+        if freq % 2 != 0:
+            odd = odd + 1
+            if odd > 1:
+                return False
+    return True
+
+
 if __name__ == '__main__':
     str = input("Enter String >> ")
-    answer = Palindrome_Permutation(str)
+    answer = Pal_Per(str)
     print(answer)
