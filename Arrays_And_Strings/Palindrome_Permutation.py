@@ -48,6 +48,7 @@ def Palindrome_Permutation_1(str1):
     else:
         return Odd_palindrome_check(str1)
 
+#Solution 2
 
 def Pal_Per(s):
     cnt = Counter(s)
